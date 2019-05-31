@@ -4,7 +4,7 @@ namespace App\Model\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class User_role extends Model
 {
     //
      /**
@@ -12,20 +12,11 @@ class User extends Model
      *
      * @var string
      */
-    protected $table = 'user';
+    protected $table = 'user_role';
 
     protected $primaryKey = 'id';
 
     public $timestamps = false;
 
     protected $guarded = [];
-
-    
-     /**
-     * 获得此用户的角色。
-     */
-    public function usr()
-    {
-        return $this->hasMany('App\Model\Admin\user_role','userid','id');
-    }
 }
