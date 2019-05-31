@@ -48,7 +48,7 @@
 
 			<!-- BEGIN FORM-->
 
-			<form action="/admin/user/{{$rs->id}}" class="form-horizontal" method="post" enctype="multipart/form-data">
+			<form action="/admin/friend/{{$rs->id}}" class="form-horizontal" method="post" enctype="multipart/form-data">
 
 
 
@@ -57,11 +57,11 @@
 
 				<div class="control-group">
 
-					<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></label>
+					<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">链接名</font></font></label>
 
 					<div class="controls">
 
-						<input type="text" name="username" class="m-wrap large" value="{{$rs->username}}">
+						<input type="text" name="fname" class="m-wrap large" value="{{$rs->fname}}">
 
 						<span class="help-inline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></span>
 
@@ -73,11 +73,11 @@
 
 				<div class="control-group">
 
-					<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">email</font></font></label>
+					<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">url</font></font></label>
 
 					<div class="controls">
 
-						<input type="text" name='email' class="m-wrap large" value="{{$rs->email}}">
+						<input type="text" name='url' class="m-wrap large" value="{{$rs->url}}">
 
 						<span class="help-inline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></span>
 
@@ -98,15 +98,15 @@
 
 									<div class="radio"><span class="checked"><input type="radio" name="status" value="1" @if($rs->status==1)checked @endif></span></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
 
-									开启
+									禁用
 
 									</font></font></label>
 
 									<label class="radio line">
 
 									<div class="radio"><span><input type="radio" name="status" value="0" @if($rs->status==0)checked @endif></span></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-
-									禁用
+开启
+									
 
 									</font></font></label>  
 
@@ -118,34 +118,7 @@
 
 
 
-				<div class="control-group">
-
-					<label class="control-label">头像</label>
-
-					<div class="controls">
-
-						<img src="{{$rs->profile}}" alt="" style='width:120px'>
-						<input type="file" name='profile' class="default">
-
-					</div>
-
-				</div>
-
-
-				<div class="control-group">
-
-					<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手机号</font></font></label>
-
-					<div class="controls">
-
-						<input type="text" name="phone" class="m-wrap large" value="{{$rs->phone}}">
-
-						<span class="help-inline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></span>
-
-					</div>
-
-				</div>
-
+				
 
 
 				<div class="form-actions">
@@ -166,7 +139,7 @@
 
 	<!-- END SAMPLE FORM PORTLET-->
 
-</div>
+	</div>
 @stop
 
 

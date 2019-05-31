@@ -12,8 +12,8 @@
     {{session('success')}}
 </div>
 @endif
-
-
+     
+          
 <!-- BEGIN EXAMPLE TABLE PORTLET-->
 <div class="portlet box light-grey">
     <div class="portlet-title">
@@ -38,7 +38,7 @@
             <div class="row-fluid">
                 <div class="span6">
 
-                    <form action="/admin/user" method='get'>
+                    <form action="/admin/articles" method='get'>
                         <div id="DataTables_Table_1_length" class="dataTables_length">
                             <label>
                                 显示
@@ -63,12 +63,8 @@
                 <div class="span6">
                     <div class="dataTables_filter" id="sample_1_filter">
                         <label>
-                            邮箱:
-                            <input type="text" name='email' aria-controls="DataTables_Table_1" value="{{$request->email}}">
-                        </label>
-                        <label>
-                            用户名:
-                            <input type="text" name='username' aria-controls="DataTables_Table_1" value="{{$request->username}}">
+                            评论内容:
+                            <input type="text" name='commentname' aria-controls="DataTables_Table_1" value="{{$request->commentname}}">
                         </label>
                         <button type="submit" class="btn">搜索</button>
                     </div>
@@ -79,7 +75,7 @@
             id="sample_1" aria-describedby="sample_1_info">
                 <thead>
                     <tr role="row">
-                        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
+                      <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
                         rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
@@ -91,15 +87,7 @@
                         rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                    用户名
-                                </font>
-                            </font>
-                        </th>
-                        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
-                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 150px;">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">
-                                    邮箱
+                                    标题
                                 </font>
                             </font>
                         </th>
@@ -107,7 +95,7 @@
                         rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                    手机号
+                                    关键字
                                 </font>
                             </font>
                         </th>
@@ -115,7 +103,15 @@
                         rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                    头像
+                                    导航
+                                </font>
+                            </font>
+                        </th>
+                        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
+                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                    标签
                                 </font>
                             </font>
                         </th>
@@ -128,7 +124,15 @@
                             </font>
                         </th>
                         <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
-                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: ;">
+                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">
+                                    创建时间
+                                </font>
+                            </font>
+                        </th>
+                        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
+                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
                                     操作
@@ -143,39 +147,42 @@
                     @else
                     <tr class="gradeX even">
                     @endif
-                        <td class="center hidden-480 ">
-                            {{$v->id}}
-                        </td>
-                        <td class="center hidden-480 ">
-                            {{$v->username}}
-                        </td>
-                        <td class="center hidden-480 ">
-                            {{$v->email}}
-                        </td>
-                        <td class="center hidden-480 ">
-                            {{$v->phone}}
-                        </td>
-                        <td class="center hidden-480 ">
-                            <img src="{{$v->profile}}">
+                        <td class=" ">{{$v->id}}</td>
+
+                        <td class=" ">{{$v->title}}</td>
+
+                        
+
+                        <td class=" ">{{$v->keywords}}</td>
+
+                        <td class="">{{$v->catid}}</td>
+
+                        <td class=" ">{{$v->tags}}</td>
+
+                        
+
+                        <td class=" ">
                             
-                        </td>
-                        <td class="center hidden-480 ">
-                            
-                            {{--@if($v->status == 1)
+                            @if($v->status == 1)
                                 开启
                             @else
                                 禁用
                             @endif
-                            --}}
-
-                            <!-- 自定义函数 -->
-                            {{getUsersta($v->status)}}                       
+                           
                         </td>
-                        <td class="">                           
-                            <a class='btn purple' href="/admin/userrole?uid={{$v->id}}">角色</a>
 
-                            <a class='btn wine red' href="/admin/user/{{$v->id}}/edit">修改</a>
-                            <form action="/admin/user/{{$v->id}}" method='post' style='display: inline'>
+                        <td class=" ">{{$v->time}}</td>
+
+
+                               
+                        
+                        
+                        <td class=" ">
+                            
+                            <a class='btn wine red' href="/admin/articles/{{$v->id}}/edit">修改</a>
+
+
+                            <form action="/admin/articles/{{$v->id}}" method='post' style='display: inline'>
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
                                 <button class='btn blue'>删除</button>
@@ -203,10 +210,10 @@
                     <div class="dataTables_paginate paging_bootstrap pagination">
                         <ul>
                             {{$rs->appends($request->all())->links()}}
-                           
                         </ul>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

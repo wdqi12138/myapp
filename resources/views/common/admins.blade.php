@@ -42,7 +42,7 @@
 
 	<!-- BEGIN PAGE LEVEL STYLES --> 
 
-	<link href="/admin/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+	<!-- <link href="/admin/css/jquery.gritter.css" rel="stylesheet" type="text/css"/> -->
 
 	<link href="/admin/css/daterangepicker.css" rel="stylesheet" type="text/css" />
 
@@ -55,6 +55,7 @@
 	<!-- END PAGE LEVEL STYLES -->
 
 	<link rel="shortcut icon" href="/admin/image/favicon.ico" />
+
 
 </head>
 
@@ -78,7 +79,7 @@
 
 				<a class="brand" href="index.html">
 
-				<img src="/admin/image/logo.png" alt="logo"/>
+				<img src="/admin/image/xiaohuihui.png" alt="logo" style="height: 30px;" />
 
 				</a>
 
@@ -98,15 +99,20 @@
 
 				<ul class="nav pull-right">
 
-					
+					@php
+							$us = DB::table('user')->where('id',session('uid'))->first();
+
+					@endphp
 
 					<li class="dropdown user">
 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-						<img alt="" src="/admin/image/avatar1_small.jpg" />
+						<img alt="User Photo" src="{{$us->profile}}" style="width: 36px;" />
 
-						<span class="username"></span>
+						<span class="username">
+						{{$us->username}}
+						</span>
 
 						<i class="icon-angle-down"></i>
 
@@ -114,19 +120,11 @@
 
 						<ul class="dropdown-menu">
 
-							<li><a href="extra_profile.html"><i class="icon-user"></i>我的简历</a></li>
-
-							<li><a href="page_calendar.html"><i class="icon-calendar"></i>我的日历</a></li>
-
-							<li><a href="inbox.html"><i class="icon-envelope"></i>我的收件箱(3)</a></li>
-
-							<li><a href="#"><i class="icon-tasks"></i>我的任务</a></li>
-
-							<li class="divider"></li>
-
-							<li><a href="extra_lock.html"><i class="icon-lock"></i>锁屏</a></li>
-
-							<li><a href="login.html"><i class="icon-key"></i>登出</a></li>
+							
+                    	<li><a href="/admin/profile">修改头像</a></li>
+                        <li><a href="/admin/pass">修改密码</a></li>
+                        <li><a href="/admin/logout">退出</a></li>
+                    
 
 						</ul>
 
@@ -179,17 +177,24 @@
 
 				</li>
 
-				<li class="start active ">
+			
+				<li class="">
 
-					<a href="index.html">
+					<a href="javascript:;">
 
 					<i class="icon-home"></i> 
 
 					<span class="title">首页</span>
 
-					<span class="selected"></span>
+					<span class="arrow "></span>
 
 					</a>
+
+					<ul class="sub-menu">
+
+						<li><a href="/admin/index">首页</a></li>
+
+					</ul>
 
 				</li>
 
@@ -212,18 +217,8 @@
 
 					<ul class="sub-menu">
 
-						<li >
-
-							<a href="/admin/user/create">添加管理员</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/user">浏览管理员</a>
-
-						</li>
-
+						<li><a href="/admin/user/create">添加管理员</a></li>
+                        <li><a href="/admin/user">浏览管理员</a></li>
 
 					</ul>
 
@@ -233,7 +228,48 @@
 
 					<a href="javascript:;">
 
-					<i class="icon-sitemap"></i> 
+					<i class=" icon-user-md"></i> 
+
+					<span class="title">角色管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li><a href="/admin/role/create">添加角色</a></li>
+                        <li><a href="/admin/role">浏览角色</a></li>
+
+					</ul>
+
+				</li>
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-key"></i> 
+
+					<span class="title">权限管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li><a href="/admin/permission/create">添加权限</a></li>
+                        <li><a href="/admin/permission">浏览权限</a></li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class=" icon-sitemap"></i> 
 
 					<span class="title">导航管理</span>
 
@@ -245,13 +281,13 @@
 
 						<li >
 
-							<a href="table_basic.html">添加导航</a>
+							<a href="/admin/sorts/create">添加导航</a>
 
 						</li>
 
 						<li >
 
-							<a href="table_responsive.html">浏览导航</a>
+							<a href="/admin/sorts">浏览导航</a>
 
 						</li>
 
@@ -266,7 +302,7 @@
 
 					<i class="icon-picture"></i> 
 
-					<span class="title">轮播图管理</span>
+					<span class="title">轮播管理</span>
 
 					<span class="arrow "></span>
 
@@ -276,13 +312,13 @@
 
 						<li >
 
-							<a href="table_basic.html">添加轮播图</a>
+							<a href="/admin/lunbo/create">添加轮播</a>
 
 						</li>
 
 						<li >
 
-							<a href="table_responsive.html">浏览轮播图</a>
+							<a href="/admin/lunbo">浏览轮播</a>
 
 						</li>
 
@@ -307,13 +343,13 @@
 
 						<li >
 
-							<a href="table_basic.html">添加广告</a>
+							<a href="/admin/poster/create">添加广告</a>
 
 						</li>
 
 						<li >
 
-							<a href="table_responsive.html">浏览广告</a>
+							<a href="/admin/poster">浏览广告</a>
 
 						</li>
 
@@ -359,7 +395,7 @@
 
 					<i class="icon-paper-clip"></i> 
 
-					<span class="title">友情链接</span>
+					<span class="title">链接管理</span>
 
 					<span class="arrow "></span>
 
@@ -369,13 +405,13 @@
 
 						<li >
 
-							<a href="table_basic.html">添加友情链接</a>
+							<a href="/admin/friend/create">添加链接</a>
 
 						</li>
 
 						<li >
 
-							<a href="table_responsive.html">浏览友情链接</a>
+							<a href="/admin/friend">浏览链接</a>
 
 						</li>
 
@@ -400,13 +436,13 @@
 
 						<li >
 
-							<a href="table_basic.html">添加评论</a>
+							<a href="/admin/comments/create">添加评论</a>
 
 						</li>
 
 						<li >
 
-							<a href="table_responsive.html">浏览评论</a>
+							<a href="/admin/comments">浏览评论</a>
 
 						</li>
 
@@ -431,13 +467,13 @@
 
 						<li >
 
-							<a href="table_basic.html">添加标签</a>
+							<a href="/admin/labels/create">添加标签</a>
 
 						</li>
 
 						<li >
 
-							<a href="table_responsive.html">浏览标签</a>
+							<a href="/admin/labels">浏览标签</a>
 
 						</li>
 
@@ -461,7 +497,7 @@
 
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-			<div id="portlet-config" class="modal hide">
+		<!-- 	<div id="portlet-config" class="modal hide">
 
 				<div class="modal-header">
 
@@ -477,7 +513,7 @@
 
 				</div>
 
-			</div>
+			</div> -->
 
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
@@ -501,7 +537,7 @@
 
 						<h3 class="page-title">
 
-							Dashboard <small>statistics and more</small>
+							本页位置 <small></small>
 
 						</h3>
 
@@ -511,13 +547,13 @@
 
 								<i class="icon-home"></i>
 
-								<a href="index.html">首页</a> 
+								<a href="/admin/index">首页</a> 
 
 								<i class="icon-angle-right"></i>
 
 							</li>
 
-							<li><a href="#">Dashboard</a></li>
+							<li><a href="">{{$title}}</a></li>
 
 							
 
@@ -593,9 +629,10 @@
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 
 	<!-- BEGIN CORE PLUGINS -->
+	<script src="/admin/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 
 	<script src="/admin/js/jquery-1.10.1.min.js" type="text/javascript"></script>
-
+	
 	<script src="/admin/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
 	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
@@ -665,7 +702,6 @@
 	<script src="/admin/js/index.js" type="text/javascript"></script>        
 
 	<!-- END PAGE LEVEL SCRIPTS -->  
-
 	<script>
 
 		jQuery(document).ready(function() {    
@@ -691,13 +727,12 @@
 		});
 
 	</script>
+	
 
 	<!-- END JAVASCRIPTS -->
-	 @section('js')
+@section('js')
 
-
-     @show
-
+@show
 </body>
 
 <!-- END BODY -->

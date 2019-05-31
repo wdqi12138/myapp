@@ -38,7 +38,7 @@
             <div class="row-fluid">
                 <div class="span6">
 
-                    <form action="/admin/user" method='get'>
+                    <form action="/admin/friend" method='get'>
                         <div id="DataTables_Table_1_length" class="dataTables_length">
                             <label>
                                 显示
@@ -63,12 +63,8 @@
                 <div class="span6">
                     <div class="dataTables_filter" id="sample_1_filter">
                         <label>
-                            邮箱:
-                            <input type="text" name='email' aria-controls="DataTables_Table_1" value="{{$request->email}}">
-                        </label>
-                        <label>
                             用户名:
-                            <input type="text" name='username' aria-controls="DataTables_Table_1" value="{{$request->username}}">
+                            <input type="text" name='fname' aria-controls="DataTables_Table_1" value="{{$request->fname}}">
                         </label>
                         <button type="submit" class="btn">搜索</button>
                     </div>
@@ -91,15 +87,7 @@
                         rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                    用户名
-                                </font>
-                            </font>
-                        </th>
-                        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
-                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 150px;">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">
-                                    邮箱
+                                    链接名
                                 </font>
                             </font>
                         </th>
@@ -107,15 +95,7 @@
                         rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                    手机号
-                                </font>
-                            </font>
-                        </th>
-                        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
-                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">
-                                    头像
+                                    链接url
                                 </font>
                             </font>
                         </th>
@@ -127,8 +107,9 @@
                                 </font>
                             </font>
                         </th>
+                       
                         <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_1"
-                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: ;">
+                        rowspan="1" colspan="1" aria-label="要点：激活以对列升序进行排序" style="width: 137px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
                                     操作
@@ -147,35 +128,24 @@
                             {{$v->id}}
                         </td>
                         <td class="center hidden-480 ">
-                            {{$v->username}}
+                            {{$v->fname}}
                         </td>
                         <td class="center hidden-480 ">
-                            {{$v->email}}
-                        </td>
-                        <td class="center hidden-480 ">
-                            {{$v->phone}}
-                        </td>
-                        <td class="center hidden-480 ">
-                            <img src="{{$v->profile}}">
-                            
+                            {{$v->url}}
                         </td>
                         <td class="center hidden-480 ">
                             
-                            {{--@if($v->status == 1)
-                                开启
-                            @else
+                            @if($v->status == 1)
                                 禁用
+                            @else
+                                开启
                             @endif
-                            --}}
-
-                            <!-- 自定义函数 -->
-                            {{getUsersta($v->status)}}                       
+                                           
                         </td>
+                       
                         <td class="">                           
-                            <a class='btn purple' href="/admin/userrole?uid={{$v->id}}">角色</a>
-
-                            <a class='btn wine red' href="/admin/user/{{$v->id}}/edit">修改</a>
-                            <form action="/admin/user/{{$v->id}}" method='post' style='display: inline'>
+                            <a class='btn wine red' href="/admin/friend/{{$v->id}}/edit">修改</a>
+                            <form action="/admin/friend/{{$v->id}}" method='post' style='display: inline'>
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
                                 <button class='btn blue'>删除</button>

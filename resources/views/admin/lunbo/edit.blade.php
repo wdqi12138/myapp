@@ -48,7 +48,7 @@
 
 			<!-- BEGIN FORM-->
 
-			<form action="/admin/user/{{$rs->id}}" class="form-horizontal" method="post" enctype="multipart/form-data">
+			<form action="/admin/lunbo/{{$rs->id}}" class="form-horizontal" method="post" enctype="multipart/form-data">
 
 
 
@@ -61,7 +61,7 @@
 
 					<div class="controls">
 
-						<input type="text" name="username" class="m-wrap large" value="{{$rs->username}}">
+						<input type="text" name="name" class="m-wrap large" value="{{$rs->name}}">
 
 						<span class="help-inline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></span>
 
@@ -69,21 +69,6 @@
 
 				</div>
 
-				
-
-				<div class="control-group">
-
-					<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">email</font></font></label>
-
-					<div class="controls">
-
-						<input type="text" name='email' class="m-wrap large" value="{{$rs->email}}">
-
-						<span class="help-inline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></span>
-
-					</div>
-
-				</div>
 
 
 				<div class="control-group">
@@ -98,7 +83,7 @@
 
 									<div class="radio"><span class="checked"><input type="radio" name="status" value="1" @if($rs->status==1)checked @endif></span></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
 
-									开启
+									禁用
 
 									</font></font></label>
 
@@ -106,7 +91,7 @@
 
 									<div class="radio"><span><input type="radio" name="status" value="0" @if($rs->status==0)checked @endif></span></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
 
-									禁用
+									开启
 
 									</font></font></label>  
 
@@ -120,7 +105,7 @@
 
 				<div class="control-group">
 
-					<label class="control-label">头像</label>
+					<label class="control-label">图片</label>
 
 					<div class="controls">
 
@@ -132,19 +117,7 @@
 				</div>
 
 
-				<div class="control-group">
-
-					<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手机号</font></font></label>
-
-					<div class="controls">
-
-						<input type="text" name="phone" class="m-wrap large" value="{{$rs->phone}}">
-
-						<span class="help-inline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></span>
-
-					</div>
-
-				</div>
+				
 
 
 
